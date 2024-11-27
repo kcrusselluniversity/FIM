@@ -28,12 +28,6 @@ def monitor_files():
     config = load_config()
     file_states = {}
 
-<<<<<<< HEAD
-    for entry in config["files"]:
-        file_states[entry["path"]] = {
-            "hash": calculate_hash(entry["path"]),
-        }
-=======
     # Function to update file states for new or modified entries in the configuration
     def update_file_states():
         nonlocal config
@@ -55,16 +49,12 @@ def monitor_files():
 
     # Set up initial state for each monitored file
     update_file_states()
->>>>>>> eec8000 (Refactor code)
 
     while True:
-<<<<<<< HEAD
-=======
         # Reload and update file states if configuration has changed
         update_file_states()
 
         # Iterate over all monitored files in the configuration
->>>>>>> eec8000 (Refactor code)
         for entry in config["files"]:
             path = entry["path"]
             rule = entry["rule"]
@@ -88,16 +78,8 @@ def monitor_files():
             except FileNotFoundError:
                 log_change(f"File {path} was deleted.")
 
-<<<<<<< HEAD
-        time.sleep(60)  # Check every minute
-=======
         # Wait for 5 seconds before checking the files again
         time.sleep(5)
->>>>>>> eec8000 (Refactor code)
 
 if __name__ == "__main__":
-<<<<<<< HEAD
     monitor_files()
-=======
-    monitor_files()
->>>>>>> eec8000 (Refactor code)
