@@ -154,9 +154,7 @@ The monitoring script sends log entries to an Elasticsearch instance for central
 
 1.  Elasticsearch is installed and running on your system or accessible remotely.
 2.  The `ELASTICSEARCH_HOST` and `ELASTICSEARCH_INDEX` variables in `fim_monitor.py` are correctly configured for your setup.
-3.  Create the required index in Elasticsearch (if not already created):
-
-    `curl -X PUT "http://localhost:9200/fim_logs?pretty"`
+3.  You have created an .env file and added the API key required to access Elasticsearch.
 
 * * * * *
 
