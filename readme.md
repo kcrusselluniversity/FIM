@@ -32,6 +32,7 @@ Installation
 4.  Install required Python packages:
 
     `pip install elasticsearch`
+    `pip install decouple`
 
 * * * * *
 
