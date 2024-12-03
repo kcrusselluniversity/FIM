@@ -15,7 +15,8 @@ sudo apt update && sudo apt install -y python3 python3-pip
 
 # Install Python dependencies
 print_message "Installing required Python packages..."
-pip3 install elasticsearch decouple
+sudo apt install python3-elasticsearch
+sudo apt install python3-decouple
 
 # Create a systemd service file for fim_monitor
 SERVICE_FILE="/etc/systemd/system/fim_monitor.service"
