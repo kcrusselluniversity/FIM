@@ -9,6 +9,23 @@ print_message() {
 
 print_message "Starting FIM setup..."
 
+# Prompt the user about Elasticsearch configuration
+print_message "Do you want to configure Elasticsearch now? (Y/N)"
+read -r use_elasticsearch
+
+# Create .env file with either a real API key or a placeholder
+ENV_FILE=".env"
+if [ "$use_elasticsearch" == "Y" ] || [ "$use_elasticsearch" == "y" ]; then
+    print_message "Please enter your Elasticsearch API key:"
+    read -r api_key
+    echo "API_KEY=$api_key" > "$ENV_FILE"
+    print_message ".env file created with your API key."
+else
+    echo "API_KEY=your_elasticsearch_api_key_here" > "$ENV_FILE"
+    print_message ".env file created with a placeholder API key. You can configure it later."
+fi
+sleep 3
+
 # Update and install necessary packages
 print_message "Updating package list and installing Python and pip..."
 sudo apt update && sudo apt install -y python3 python3-pip
@@ -46,14 +63,6 @@ print_message "Enabling and starting fim_monitor service..."
 sudo systemctl enable fim_monitor
 sudo systemctl start fim_monitor
 sleep 2
-
-# Create .env file for Elasticsearch API key (if needed)
-ENV_FILE=".env"
-if [ ! -f "$ENV_FILE" ]; then
-    print_message "Creating .env file for Elasticsearch API key..."
-    echo "API_KEY=your_elasticsearch_api_key_here" > "$ENV_FILE"
-    print_message "Replace 'your_elasticsearch_api_key_here' with your actual API key in the .env file."
-fi
 
 # Final message
 print_message "Setup complete!"
