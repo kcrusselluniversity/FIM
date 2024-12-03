@@ -47,7 +47,7 @@ After=network.target
 ExecStart=$(which python3) $(pwd)/fim_monitor.py
 WorkingDirectory=$(pwd)
 Restart=always
-User=$(whoami)
+User=root
 
 [Install]
 WantedBy=multi-user.target
