@@ -46,7 +46,7 @@ def log_change(message, file_path, rule, user=None):
 
     # Send log entry to Elasticsearch
     try:
-        es.index(index=ELASTICSEARCH_INDEX, body=log_entry)
+        es.index(index=ELASTICSEARCH_INDEX, document=log_entry)
     except Exception as e:
         print(f"Failed to send log to Elasticsearch: {e}")
 
