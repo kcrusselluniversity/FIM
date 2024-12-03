@@ -35,6 +35,7 @@ User=$(whoami)
 [Install]
 WantedBy=multi-user.target
 EOL
+sleep 3
 
 # Reload systemd to register the service
 print_message "Reloading systemd daemon to apply changes..."
@@ -44,6 +45,7 @@ sudo systemctl daemon-reload
 print_message "Enabling and starting fim_monitor service..."
 sudo systemctl enable fim_monitor
 sudo systemctl start fim_monitor
+sleep 2
 
 # Create .env file for Elasticsearch API key (if needed)
 ENV_FILE=".env"
@@ -55,6 +57,7 @@ fi
 
 # Final message
 print_message "Setup complete!"
+sleep 2
 print_message "How to use FIM CLI:"
 echo "1. Add a file to monitor:"
 echo "   python3 fim_cli.py add <absolute_file_path> <rule_number> [--users <user1> <user2> ...]"
