@@ -199,8 +199,4 @@ Troubleshooting
     -   Verify that the `fim_monitor.py` script is running.
     -   Check the Elasticsearch index using:
 
-        bash
-
-        Copy code
-
         `curl -X GET "http://localhost:9200/fim_logs/_search?pretty"`
